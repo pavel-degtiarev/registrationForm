@@ -1,17 +1,19 @@
+@use "../styles/global.scss" as var;
+
 .container {
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 7px 30px #DDD;
+  padding: var.$stepBig;
+  border-radius: var.$stepMed;
+  box-shadow: 0px var.$stepSmall var.$stepBig var.$lightGray;
 }
 
 .form_content {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: var.$stepBig * 2;
 }
 
 .form_fields {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: var.$stepMed;
 }
