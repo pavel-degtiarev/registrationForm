@@ -31,7 +31,7 @@
 
               <div class="form_field field_container">
                 <input
-                  class="field_input"
+                  class="field_input field_invalid"
                   name="lastName"
                   id="lastName"
                   inputmode="text"
@@ -41,7 +41,9 @@
                   title="Разрешены символы кириллицы, латиницы и дефис."
                   required
                 />
-                <label class="field_label" for="lastName">Фамилия</label>
+                <label class="field_label" for="lastName" data-err="Текст страшной ошибки"
+                  >Фамилия</label
+                >
               </div>
 
               <div class="form_field field_container">
