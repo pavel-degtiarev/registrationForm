@@ -1,0 +1,15 @@
+@use "../styles/global.scss" as var;
+
+.form_submit {
+  padding: var.$stepSmall;
+  border-radius: var.$stepSmall;
+  font-size: var.$mainFontSize;
+  color: white;
+  border-color: var.$normalColor;
+  background: linear-gradient(180deg, var.$normalColorLight, var.$normalColor);
+
+  &.disabled {
+    border-color: var.$midGray;
+    background: linear-gradient(180deg, var.$lightGray, var.$midGray);
+  }
+}
