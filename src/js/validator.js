@@ -5,7 +5,7 @@ export class Validator {
     this.validations[fieldID] = validation;
   }
 
-  check(id, value, validity, state) {
-    return this.validations[id](value, validity, state);
+  check(id, validity, state) {
+    return this.validations[id](validity, state);
   }
 }

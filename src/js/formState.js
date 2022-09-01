@@ -24,13 +24,11 @@ export class FormState {
   }
 
   fieldBlurHandler(e) {
-    const { result, message } = this.validator.check(
-      e.target.id,
-      e.target.value,
-      e.target.validity,
-      this.state
-    );
-    const currentField = this.fields.get(e.target);
+    const input = e.target;
+
+    this.state[input.id] = input.value;
+    const { result, message } = this.validator.check(input.id, input.validity, this.state);
+    const currentField = this.fields.get(input);
     currentField.setState(result, message);
     console.log(result, message);
   }
