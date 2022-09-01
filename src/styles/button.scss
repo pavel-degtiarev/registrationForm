@@ -7,6 +7,7 @@
   color: white;
   border-color: var.$normalColor;
   background: linear-gradient(180deg, var.$normalColorLight, var.$normalColor);
+  cursor: pointer;
 
   &.disabled {
     border-color: var.$midGray;

@@ -13,12 +13,13 @@
         <form class="form">
           <div class="form_content">
             <div class="form_fields">
+              <!-- field_invalid - класс для невалидного поля -->
               <div class="form_field field_container">
                 <input
                   class="field_input"
                   name="firstName"
                   id="firstName"
-                  inputmode="text"
+                  type="text"
                   placeholder=""
                   minlength="1"
                   maxlength="255"
@@ -31,10 +32,10 @@
 
               <div class="form_field field_container">
                 <input
-                  class="field_input field_invalid"
+                  class="field_input"
                   name="lastName"
                   id="lastName"
-                  inputmode="text"
+                  type="text"
                   minlength="1"
                   maxlength="255"
                   pattern="^[А-ЯЁA-Z][а-яёa-z\-]+"
@@ -51,7 +52,7 @@
                   class="field_input"
                   name="email"
                   id="email"
-                  inputmode="email"
+                  type="email"
                   minlength="1"
                   maxlength="255"
                   title="Формат адреса: name@domain.zone"
@@ -65,7 +66,8 @@
                   class="field_input"
                   name="pass"
                   id="pass"
-                  inputmode="password"
+                  type="password"
+                  autocomplete="off"
                   minlength="8"
                   maxlength="255"
                   title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
@@ -79,13 +81,14 @@
                   class="field_input"
                   name="passRepeat"
                   id="passRepeat"
-                  inputmode="password"
+                  type="password"
+                  autocomplete="off"
                   minlength="8"
                   maxlength="255"
                   title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
                   required
                 />
-                <label class="field_label" for="passRepeat">Пароль еще раз</label>
+                <label class="field_label" for="passRepeat">Подтверждение пароля</label>
               </div>
 
               <div class="form_field field_container">
@@ -93,7 +96,7 @@
                   class="field_input"
                   name="birthDate"
                   id="birthDate"
-                  inputmode="date"
+                  type="date"
                   title="На момент регистрации вам должно быть минимум 18 лет."
                   required
                 />
@@ -101,7 +104,8 @@
               </div>
             </div>
 
-            <button class="form_submit disabled" type="submit">Зарегистрироваться</button>
+            <!-- disabled - класс для выключенной кнопки -->
+            <button class="form_submit">Отправить</button>
           </div>
         </form>
       </div>
