@@ -1,14 +1,108 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registration form</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration form</title>
+  </head>
 
-<body>
-  <h1>test</h1>
-</body>
+  <body>
+    <main>
+      <div class="container">
+        <form class="form">
+          <div class="form_content">
+            <div class="form_fields">
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="firstName"
+                  id="firstName"
+                  inputmode="text"
+                  placeholder=""
+                  minlength="1"
+                  maxlength="255"
+                  pattern="^[А-ЯЁA-Z][а-яёa-z\-]+"
+                  title="Разрешены символы кириллицы, латиницы и дефис."
+                  required
+                />
+                <label class="field_label" for="firstName">Имя</label>
+              </div>
 
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="lastName"
+                  id="lastName"
+                  inputmode="text"
+                  minlength="1"
+                  maxlength="255"
+                  pattern="^[А-ЯЁA-Z][а-яёa-z\-]+"
+                  title="Разрешены символы кириллицы, латиницы и дефис."
+                  required
+                />
+                <label class="field_label" for="lastName">Фамилия</label>
+              </div>
+
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="email"
+                  id="email"
+                  inputmode="email"
+                  minlength="1"
+                  maxlength="255"
+                  title="Формат адреса: name@domain.zone"
+                  required
+                />
+                <label class="field_label" for="email">Email</label>
+              </div>
+
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="pass"
+                  id="pass"
+                  inputmode="password"
+                  minlength="8"
+                  maxlength="255"
+                  title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
+                  required
+                />
+                <label class="field_label" for="pass">Пароль</label>
+              </div>
+
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="passRepeat"
+                  id="passRepeat"
+                  inputmode="password"
+                  minlength="8"
+                  maxlength="255"
+                  title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
+                  required
+                />
+                <label class="field_label" for="passRepeat">Пароль еще раз</label>
+              </div>
+
+              <div class="form_field field_container">
+                <input
+                  class="field_input"
+                  name="birthDate"
+                  id="birthDate"
+                  inputmode="date"
+                  title="На момент регистрации вам должно быть минимум 18 лет."
+                  required
+                />
+                <label class="field_label" for="birthDate">Дата рождения</label>
+              </div>
+            </div>
+
+            <button class="form_submit" type="submit">Зарегистрироваться</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
 </html>
