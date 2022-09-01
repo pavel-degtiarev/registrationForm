@@ -1,6 +1,5 @@
 "use strict";
 
-import "reseter.css";
-import "./styles/index.scss";
+import "./index.scss";
 
 console.log("loaded");

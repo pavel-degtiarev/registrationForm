@@ -1,0 +1,31 @@
+@use "../styles/global.scss" as var;
+
+.container {
+  padding: var.$stepBig;
+  border-radius: var.$stepMed;
+  box-shadow: 0px var.$stepSmall var.$stepBig var.$lightGray;
+
+  @media screen and (min-width:var.$sizeX) {
+    width: 600px;
+  }
+
+  @media screen and (min-width:var.$sizeS) and (max-width:calc(var.$sizeX - 1px)) {
+    width: 60vw;
+  }
+
+  @media screen and (max-width:calc(var.$sizeS - 1px)) {
+    width: calc(100vw - var.$stepSmall * 2);
+  }
+}
+
+.form_content {
+  display: flex;
+  flex-direction: column;
+  gap: var.$stepBig * 2;
+}
+
+.form_fields {
+  display: flex;
+  flex-direction: column;
+  gap: var.$stepMed;
+}
