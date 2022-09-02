@@ -7,6 +7,11 @@ import { Validator } from "./js/validator";
 import * as check from "./js/checks";
 
 const formID = "regForm";
+const submitButtonClass = "form_submit";
+
+function submitCallback(data) {
+  console.log("Данные формы отправлены", data);
+}
 
 // ключи – id input'ов из HTML, значения – функции-валидаторы этого поля
 // валидатор на вход получает объект ValidityState и объект formState
@@ -20,5 +25,5 @@ export const fieldChecks = {
 };
 
 const validator = new Validator(fieldChecks);
-const formState = new FormState(formID, validator);
+const formState = new FormState(formID, validator, submitButtonClass, submitCallback);
 Object.keys(fieldChecks).forEach((id) => formState.addField(id));
