@@ -1,8 +1,8 @@
 export class Validator {
   validations = {};
 
-  addCheck(fieldID, validation) {
-    this.validations[fieldID] = validation;
+  constructor(validations) {
+    this.validations = validations;
   }
 
   check(id, validity, state) {

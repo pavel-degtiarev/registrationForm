@@ -9,7 +9,7 @@ import * as check from "./js/checks";
 const formID = "regForm";
 
 // ключи – id input'ов из HTML, значения – функции-валидаторы этого поля
-// валидатор на вход получает значение поля, объект ValidityState и объект formState
+// валидатор на вход получает объект ValidityState и объект formState
 export const fieldChecks = {
   firstName: check.name,
   lastName: check.name,
@@ -19,8 +19,6 @@ export const fieldChecks = {
   birthDate: check.birthDate,
 };
 
-const formState = new FormState(formID, new Validator());
-
-Object.keys(fieldChecks).forEach((id) => {
-  formState.addField(id, fieldChecks[id]);
-});
+const validator = new Validator(fieldChecks);
+const formState = new FormState(formID, validator);
+Object.keys(fieldChecks).forEach((id) => formState.addField(id));
