@@ -19,7 +19,7 @@ export class FormState {
   }
 
   addField(id) {
-    const DOMfield = document.getElementById(id);
+    const DOMfield = this.form.querySelector(`#${id}`);
     if (!DOMfield) throw new Error(`Поле с ID:${id} не найдено!`);
 
     const fieldObj = new Field(DOMfield, this.fieldBlurHandler);
