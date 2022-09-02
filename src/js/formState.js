@@ -1,4 +1,5 @@
 import { Field } from "./field";
+import { FIELD_OK } from "./global";
 
 export class FormState {
   state = {};
@@ -37,6 +38,16 @@ export class FormState {
     const currentField = this.fields.get(input);
     currentField.setState(result, message);
 
-    console.log(result, message);
+    this.handleButtonState();
+  }
+
+  handleButtonState() {
+    const fieldStates = [...this.fields.values()].map((field) => field.state);
+
+    if (fieldStates.every((state) => state === FIELD_OK)) {
+      this.commitButton.classList.remove("disabled");
+    } else {
+      this.commitButton.classList.add("disabled");
+    }
   }
 }
