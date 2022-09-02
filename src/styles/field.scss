@@ -33,6 +33,6 @@
 }
 
 .field_label {
-  padding: var.$stepSmall / 2;
+  padding: calc(var.$stepSmall / 2);
   color: var.$darkGray;
 }

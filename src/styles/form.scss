@@ -14,14 +14,14 @@
   }
 
   @media screen and (max-width:calc(var.$sizeS - 1px)) {
-    width: calc(100vw - var.$stepSmall * 2);
+    width: calc(100vw - calc(var.$stepSmall * 2));
   }
 }
 
 .form_content {
   display: flex;
   flex-direction: column;
-  gap: var.$stepBig * 2;
+  gap: calc(var.$stepBig * 2);
 }
 
 .form_fields {
