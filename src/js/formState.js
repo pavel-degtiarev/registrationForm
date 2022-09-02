@@ -4,10 +4,14 @@ export class FormState {
   state = {};
   fields = new Map();
   validator = null;
+  commitButton = null;
 
-  constructor(formID, validator) {
+  constructor(formID, validator, commitButtonClass) {
     this.form = document.getElementById(formID);
     if (!this.form) throw new Error("Форма не найдена!");
+
+    this.commitButton = this.form.querySelector(`.${commitButtonClass}`);
+    if (!this.commitButton) throw new Error("Кнопка отправки формы не найдена!");
 
     this.validator = validator;
 
@@ -29,8 +33,10 @@ export class FormState {
 
     this.state[input.id] = input.value;
     const { result, message } = this.validator.check(input.id, input.validity, this.state);
+
     const currentField = this.fields.get(input);
     currentField.setState(result, message);
+
     console.log(result, message);
   }
 }
