@@ -10,7 +10,7 @@
   <body>
     <main>
       <div class="container">
-        <form class="form">
+        <form class="form" id="regForm">
           <div class="form_content">
             <div class="form_fields">
               <!-- field_invalid - класс для невалидного поля -->
@@ -23,7 +23,7 @@
                   placeholder=""
                   minlength="1"
                   maxlength="255"
-                  pattern="^[А-ЯЁA-Z][а-яёa-z\-]+"
+                  pattern="[А-ЯЁA-Zа-яёa-z\-]+"
                   title="Разрешены символы кириллицы, латиницы и дефис."
                   required
                 />
@@ -38,7 +38,7 @@
                   type="text"
                   minlength="1"
                   maxlength="255"
-                  pattern="^[А-ЯЁA-Z][а-яёa-z\-]+"
+                  pattern="[А-ЯЁA-Zа-яёa-z\-]+"
                   title="Разрешены символы кириллицы, латиницы и дефис."
                   required
                 />
@@ -105,7 +105,7 @@
             </div>
 
             <!-- disabled - класс для выключенной кнопки -->
-            <button class="form_submit">Отправить</button>
+            <button class="form_submit disabled">Отправить</button>
           </div>
         </form>
       </div>
