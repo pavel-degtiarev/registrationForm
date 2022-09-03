@@ -1,4 +1,3 @@
-import { Field } from "./field";
 import { FIELD_OK } from "./global";
 
 export class FormState {
@@ -8,27 +7,24 @@ export class FormState {
   commitButton = null;
   submitCallback = () => {};
 
-  constructor(formID, validator, commitButtonClass, submitCallback) {
+  constructor(formID, fields, validator, submitButtonClass, submitCallback) {
     this.fieldBlurHandler = this.fieldBlurHandler.bind(this);
     this.formSubmitHandler = this.formSubmitHandler.bind(this);
+
     this.validator = validator;
     this.submitCallback = submitCallback;
 
     this.form = document.getElementById(formID);
     if (!this.form) throw new Error("Форма не найдена!");
 
-    this.commitButton = this.form.querySelector(`.${commitButtonClass}`);
+    this.commitButton = this.form.querySelector(`.${submitButtonClass}`);
     if (!this.commitButton) throw new Error("Кнопка отправки формы не найдена!");
-  }
 
-  addField(id) {
-    const DOMfield = this.form.querySelector(`#${id}`);
-    if (!DOMfield) throw new Error(`Поле с ID:${id} не найдено!`);
-
-    const fieldObj = new Field(DOMfield, this.fieldBlurHandler);
-    this.fields.set(DOMfield, fieldObj);
-
-    this.state[id] = "";
+    fields.forEach((field) => {
+      field.setBlurHandler(this.fieldBlurHandler);
+      this.fields.set(field.input, field);
+      this.state[field.id] = "";
+    });
   }
 
   fieldBlurHandler(e) {
