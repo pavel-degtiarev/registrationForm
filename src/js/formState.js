@@ -7,7 +7,7 @@ export class FormState {
   commitButton = null;
   submitCallback = () => {};
 
-  constructor(formID, fields, validator, commitButtonClass, submitCallback) {
+  constructor(formID, fields, validator, submitButtonClass, submitCallback) {
     this.fieldBlurHandler = this.fieldBlurHandler.bind(this);
     this.formSubmitHandler = this.formSubmitHandler.bind(this);
 
@@ -17,7 +17,7 @@ export class FormState {
     this.form = document.getElementById(formID);
     if (!this.form) throw new Error("Форма не найдена!");
 
-    this.commitButton = this.form.querySelector(`.${commitButtonClass}`);
+    this.commitButton = this.form.querySelector(`.${submitButtonClass}`);
     if (!this.commitButton) throw new Error("Кнопка отправки формы не найдена!");
 
     fields.forEach((field) => {
