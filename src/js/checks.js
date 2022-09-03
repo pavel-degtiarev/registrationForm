@@ -35,6 +35,7 @@ export function email(validity) {
 
   const validityMatrix = {
     typeMismatch: "Неправильный формат email.",
+    patternMismatch: "Неправильный формат email.",
     tooLong: "Слишком длинный адрес. Допускается не более 255 символов.",
     valueMissing: "Поле обязательно должно быть заполнено.",
   };
