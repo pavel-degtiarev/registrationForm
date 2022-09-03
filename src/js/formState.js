@@ -1,22 +1,21 @@
 import { FIELD_OK } from "./global";
 
 export class FormState {
+  form = null;
   state = {};
   fields = new Map();
   validator = null;
   submitButton = null;
   submitCallback = () => {};
 
-  constructor(formID, fields, validator, submitButton, submitCallback) {
+  constructor(form, fields, validator, submitButton, submitCallback) {
     this.fieldBlurHandler = this.fieldBlurHandler.bind(this);
     this.formSubmitHandler = this.formSubmitHandler.bind(this);
 
+    this.form = form;
     this.validator = validator;
     this.submitButton = submitButton;
     this.submitCallback = submitCallback;
-
-    this.form = document.getElementById(formID);
-    if (!this.form) throw new Error("Форма не найдена!");
 
     fields.forEach((field) => {
       field.setBlurHandler(this.fieldBlurHandler);
