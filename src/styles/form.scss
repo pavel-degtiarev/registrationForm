@@ -14,7 +14,9 @@
   }
 
   @media screen and (max-width:calc(var.$sizeS - 1px)) {
-    width: calc(100vw - calc(var.$stepSmall * 2));
+    width: 100vw;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
