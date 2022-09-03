@@ -2,19 +2,22 @@ import { FIELD_ERROR, FIELD_OK, FIELD_UNDEFINED } from "./global";
 
 export class Field {
   state = FIELD_UNDEFINED;
-  field = null;
+  id = null;
+  input = null;
   label = null;
 
-  constructor(fieldID) {
-    this.field = document.querySelector(`#${fieldID}`);
-    if (!this.field) throw new Error(`Поле с ID:${fieldID} не найдено!`);
+  constructor(inputID) {
+    this.input = document.querySelector(`#${inputID}`);
+    if (!this.input) throw new Error(`Поле с ID:${inputID} не найдено!`);
 
-    this.label = document.querySelector(`label[for=${fieldID}]`);
-    if (!this.label) throw new Error(`У поля с ID:${fieldID} не найдена подпись!`);
+    this.label = document.querySelector(`label[for=${inputID}]`);
+    if (!this.label) throw new Error(`У поля с ID:${inputID} не найдена подпись!`);
+
+    this.id = inputID;
   }
 
   setBlurHandler(handler) {
-    this.field.addEventListener("blur", handler);
+    this.input.addEventListener("blur", handler);
   }
 
   setState(result, message) {
@@ -22,12 +25,12 @@ export class Field {
 
     switch (true) {
       case this.state === FIELD_OK:
-        this.field.classList.remove("field_invalid");
+        this.input.classList.remove("field_invalid");
         this.label.dataset.err = "";
         break;
 
       case this.state === FIELD_ERROR:
-        this.field.classList.add("field_invalid");
+        this.input.classList.add("field_invalid");
         this.label.dataset.err = message;
         break;
     }
