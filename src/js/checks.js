@@ -19,7 +19,6 @@ import { FIELD_ERROR, FIELD_OK } from "./global";
 // =============================================
 
 export function name(validity) {
-
   const validityMatrix = {
     patternMismatch: "Разрешены символы кириллицы, латиницы и дефис.",
     tooLong: "Слишком много текста. Допускается не более 255 символов.",
@@ -32,7 +31,6 @@ export function name(validity) {
 // =============================================
 
 export function email(validity) {
-
   const validityMatrix = {
     typeMismatch: "Неправильный формат email.",
     patternMismatch: "Неправильный формат email.",
@@ -46,7 +44,6 @@ export function email(validity) {
 // =============================================
 
 export function password(validity, state) {
-
   const validityMatrix = {
     tooLong: "Слишком длинный пароль. Допускается не более 255 символов.",
     tooShort: "Слишком короткий пароль. Должно быть не менее 8 символов.",
@@ -54,6 +51,17 @@ export function password(validity, state) {
 
   const check = validityCheck(validityMatrix, validity);
   if (check.result === FIELD_ERROR) return check;
+
+  const passIsStrong = [/\d/, /[a-z]/, /[A-Z]/, /[!@#$%&*]/]
+    .map((test) => state.pass.match(test))
+    .every((item) => item);
+  
+  if (state.pass && !passIsStrong)
+    return {
+      result: FIELD_ERROR,
+      message:
+        "Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ.",
+    };
 
   if (state.pass && state.passRepeat && state.pass !== state.passRepeat)
     return {
@@ -67,7 +75,6 @@ export function password(validity, state) {
 // =============================================
 
 export function birthDate(validity, state) {
-
   const validityMatrix = {
     badInput: "Неправильно введена дата",
   };
@@ -80,8 +87,7 @@ export function birthDate(validity, state) {
   const majorityDate = new Date(Number(year) + 18, Number(month) - 1, Number(day)).valueOf();
   const today = new Date().setHours(0, 0, 0);
 
-  if (today < birthDate)
-    return { result: FIELD_ERROR, message: "Серьезно? Вы из будущего?" };
+  if (today < birthDate) return { result: FIELD_ERROR, message: "Серьезно? Вы из будущего?" };
 
   if (today < majorityDate)
     return { result: FIELD_ERROR, message: "Регистрация разрешена только совершеннолетним." };
