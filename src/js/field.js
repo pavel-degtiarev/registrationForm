@@ -5,6 +5,7 @@ export class Field {
   id = null;
   input = null;
   label = null;
+  container = null;
 
   constructor(inputID) {
     this.input = document.querySelector(`#${inputID}`);
@@ -13,6 +14,7 @@ export class Field {
     this.label = document.querySelector(`label[for=${inputID}]`);
     if (!this.label) throw new Error(`У поля с ID:${inputID} не найдена подпись!`);
 
+    this.container = this.input.parentElement;
     this.id = inputID;
   }
 
@@ -25,13 +27,13 @@ export class Field {
 
     switch (true) {
       case this.state === FIELD_OK:
-        this.input.classList.remove("field_invalid");
-        this.label.dataset.err = "";
+        this.container.classList.remove("field-invalid");
+        this.container.dataset.err = "";
         break;
 
       case this.state === FIELD_ERROR:
-        this.input.classList.add("field_invalid");
-        this.label.dataset.err = message;
+        this.container.classList.add("field-invalid");
+        this.container.dataset.err = message;
         break;
     }
   }
