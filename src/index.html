@@ -14,7 +14,8 @@
           <div class="form_content">
             <div class="form_fields">
               <!-- field_invalid - класс для невалидного поля -->
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="firstName">Имя</label>
                 <input
                   class="field_input"
                   name="firstName"
@@ -27,10 +28,10 @@
                   title="Разрешены символы кириллицы, латиницы и дефис."
                   required
                 />
-                <label class="field_label" for="firstName">Имя</label>
               </div>
 
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="lastName">Фамилия</label>
                 <input
                   class="field_input"
                   name="lastName"
@@ -42,12 +43,10 @@
                   title="Разрешены символы кириллицы, латиницы и дефис."
                   required
                 />
-                <label class="field_label" for="lastName" data-err="Текст страшной ошибки"
-                  >Фамилия</label
-                >
               </div>
 
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="email">Email</label>
                 <input
                   class="field_input"
                   name="email"
@@ -59,10 +58,10 @@
                   title="Формат адреса: name@domain.zone"
                   required
                 />
-                <label class="field_label" for="email">Email</label>
               </div>
 
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="pass">Пароль</label>
                 <input
                   class="field_input"
                   name="pass"
@@ -74,10 +73,10 @@
                   title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
                   required
                 />
-                <label class="field_label" for="pass">Пароль</label>
               </div>
 
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="passRepeat">Подтверждение пароля</label>
                 <input
                   class="field_input"
                   name="passRepeat"
@@ -89,10 +88,10 @@
                   title="Минимальная длина пароля 8 символов. Пароль должен содержать минимум одну цифру, по одной заглавной и строчной букве и один символ."
                   required
                 />
-                <label class="field_label" for="passRepeat">Подтверждение пароля</label>
               </div>
 
-              <div class="form_field field_container">
+              <div class="form_field field">
+                <label class="field_label" for="birthDate">Дата рождения</label>
                 <input
                   class="field_input"
                   name="birthDate"
@@ -101,7 +100,6 @@
                   title="На момент регистрации вам должно быть минимум 18 лет."
                   required
                 />
-                <label class="field_label" for="birthDate">Дата рождения</label>
               </div>
             </div>
 
