@@ -5,10 +5,16 @@ export class Field {
   field = null;
   label = null;
 
-  constructor(field, callback) {
-    this.field = field;
-    this.label = document.querySelector(`[for=${this.field.id}]`);
-    this.field.addEventListener("blur", callback);
+  constructor(fieldID) {
+    this.field = document.querySelector(`#${fieldID}`);
+    if (!this.field) throw new Error(`Поле с ID:${fieldID} не найдено!`);
+
+    this.label = document.querySelector(`label[for=${fieldID}]`);
+    if (!this.label) throw new Error(`У поля с ID:${fieldID} не найдена подпись!`);
+  }
+
+  setBlurHandler(handler) {
+    this.field.addEventListener("blur", handler);
   }
 
   setState(result, message) {
