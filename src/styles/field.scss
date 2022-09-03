@@ -1,9 +1,30 @@
 @use "../styles/global.scss" as var;
 
-.field_container {
+.field {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   position: relative;
+
+  &.field-invalid {
+    & .field_input {
+      background-color: var.$errorColorLight;
+      border-color: var.$errorColor;
+    }
+
+    & .field_label {
+      color: var.$errorColor;
+    }
+
+    &::after {
+      display: block;
+      content: attr(data-err);
+      width: 100%;
+      padding: var.$stepSmall var.$stepBig 0;
+      font-size: var.$smallFontSize;
+      text-align: center;
+      color: var.$errorColor;
+    }
+  }
 }
 
 .field_input {
@@ -11,25 +32,6 @@
   border-radius: var.$stepSmall;
   border-color: var.$midGray;
   font-size: var.$mainFontSize;
-}
-
-.field_invalid {
-  background-color: var.$errorColorLight;
-  border-color: var.$errorColor;
-
-  &+.field_label::after {
-    display: block;
-    position: absolute;
-    content: attr(data-err);
-    width: 100%;
-    font-size: var.$smallFontSize;
-    text-align: center;
-    bottom: - (var.$stepMed);
-  }
-
-  &+.field_label {
-    color: var.$errorColor;
-  }
 }
 
 .field_label {
