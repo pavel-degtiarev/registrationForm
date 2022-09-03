@@ -5,6 +5,7 @@ import "./index.scss";
 import { FormState } from "./js/formState";
 import { Validator } from "./js/validator";
 import { Field } from "./js/field";
+import { SubmitButton } from "./js/submitButton";
 import * as check from "./js/checks";
 
 const formID = "regForm";
@@ -25,8 +26,8 @@ export const fieldChecks = {
   birthDate: check.birthDate,
 };
 
+const submitButton = new SubmitButton(submitButtonClass);
 const fields = Object.keys(fieldChecks).map((id) => new Field(id));
-
 const validator = new Validator(fieldChecks);
-// eslint-disable-next-line no-unused-vars
-const formState = new FormState(formID, fields, validator, submitButtonClass, submitCallback);
+
+new FormState(formID, fields, validator, submitButton, submitCallback);
