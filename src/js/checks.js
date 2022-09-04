@@ -22,7 +22,7 @@ const majorityAge = 18;
 
 export function name(validity) {
   const validityMatrix = {
-    patternMismatch: "Разрешены символы кириллицы, латиницы, пробел и дефис.",
+    patternMismatch: "Разрешены символы кириллицы, пробел и дефис.",
     tooLong: "Слишком много текста. Допускается не более 255 символов.",
     valueMissing: "Поле обязательно должно быть заполнено.",
   };
