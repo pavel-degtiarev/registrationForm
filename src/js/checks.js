@@ -1,5 +1,7 @@
 import { FIELD_ERROR, FIELD_OK } from "./global";
 
+const majorityAge = 18;
+
 // ValidityState {
 //   badInput,
 //   customError,
@@ -50,9 +52,13 @@ export function password(validity, state) {
     valueMissing: "Поле обязательно должно быть заполнено.",
   };
 
+  // если браузер выдал ошибку валидации, просто возвращаем ее и выходим
   const check = validityCheck(validityMatrix, validity);
   if (check.result === FIELD_ERROR) return check;
 
+  // берем массив регулярок. проверяем введенный пароль на каждой регулярке.
+  // если пароль соответствует регулярке, метод match() что-то возвращает, иначе - null.
+  // проверяем, что перебор всех регулярок не вернул ни одного null.
   const passIsStrong = [/\d/, /[a-z]/, /[A-Z]/, /[!@#$%&*]/]
     .map((test) => state.pass.match(test))
     .every((item) => item);
@@ -85,7 +91,9 @@ export function birthDate(validity, state) {
 
   const [year, month, day] = state.birthDate.split("-");
   const birthDate = new Date(Number(year), Number(month) - 1, Number(day)).valueOf();
-  const majorityDate = new Date(Number(year) + 18, Number(month) - 1, Number(day)).valueOf();
+  // дата совершеннолетия
+  const majorityDate = new Date(Number(year) + majorityAge, Number(month) - 1, Number(day)).valueOf();
+  // у birthDate и majorityDate время 00:00, поэтому у сегодняшней даты тоже сбрасываем время
   const today = new Date().setHours(0, 0, 0);
 
   if (today < birthDate) return { result: FIELD_ERROR, message: "Серьезно? Вы из будущего?" };
@@ -101,10 +109,7 @@ export function birthDate(validity, state) {
 function validityCheck(matrix, validity) {
   for (const test of Object.keys(matrix)) {
     if (validity[test])
-      return {
-        result: FIELD_ERROR,
-        message: matrix[test],
-      };
+      return { result: FIELD_ERROR, message: matrix[test] };
   }
 
   return { result: FIELD_OK, message: "" };
