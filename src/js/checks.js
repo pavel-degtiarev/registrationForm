@@ -20,7 +20,7 @@ import { FIELD_ERROR, FIELD_OK } from "./global";
 
 export function name(validity) {
   const validityMatrix = {
-    patternMismatch: "Разрешены символы кириллицы, латиницы и дефис.",
+    patternMismatch: "Разрешены символы кириллицы, латиницы, пробел и дефис.",
     tooLong: "Слишком много текста. Допускается не более 255 символов.",
     valueMissing: "Поле обязательно должно быть заполнено.",
   };
@@ -47,6 +47,7 @@ export function password(validity, state) {
   const validityMatrix = {
     tooLong: "Слишком длинный пароль. Допускается не более 255 символов.",
     tooShort: "Слишком короткий пароль. Должно быть не менее 8 символов.",
+    valueMissing: "Поле обязательно должно быть заполнено.",
   };
 
   const check = validityCheck(validityMatrix, validity);
