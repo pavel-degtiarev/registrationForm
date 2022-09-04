@@ -31,6 +31,7 @@ export class FormState {
     const input = e.target;
 
     // берем значение <input>, обновляем состояние формы и вызываем валидацию для этого поля
+    input.value = input.value.trim();
     this.state[input.id] = input.value;
     const { result, message } = this.validator.check(input.id, input.validity, this.state);
 
