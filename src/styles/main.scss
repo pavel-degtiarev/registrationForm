@@ -1,3 +1,5 @@
+@use "../styles/global.scss" as var;
+
 :root {
   font-family: sans-serif;
 }
@@ -9,4 +11,10 @@ main {
   justify-content: center;
 
   min-height: 100vh;
+
+
+  @media screen and (max-height: var.$minHeight) and (min-width:var.$sizeX) {
+    padding-top: calc(var.$stepBig * 2);
+    padding-bottom: calc(var.$stepBig * 2);
+  }
 }
