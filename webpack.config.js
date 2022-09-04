@@ -8,7 +8,7 @@ const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const entryPoint = "./src/index.js";
 const htmlTemplate = "./src/index.html";
 
-const targetFolder = "dist";
+const targetFolder = "prod";
 
 // =====================================================================
 
@@ -71,7 +71,7 @@ function devServerOptions() {
 module.exports = {
   entry: { bundle: entryPoint },
   output: {
-    filename: fileName(".js"),
+    filename: `script/${fileName(".js")}`,
     path: path.resolve(__dirname, targetFolder),
     clean: isProdMode,
   },
